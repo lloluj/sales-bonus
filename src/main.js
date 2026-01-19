@@ -9,8 +9,8 @@ function calculateSimpleRevenue(purchase, _product) {
   // purchase — это одна из записей в поле items из чека в data.purchase_records
   // _product — это продукт из коллекции data.products
   const { discount, sale_price, quantity } = purchase;
-  let discount1 = 1 - discount / 100;
-  return sale_price * quantity * discount1;
+  let discount_two = 1 - discount / 100;
+  return sale_price * quantity * discount_two;
 }
 
 /**
@@ -47,8 +47,8 @@ function analyzeSalesData(data, options) {
   }
   const { calculateRevenue, calculateBonus } = options; // Сюда передадим функции для расчётов
   if (
-    !typeof calculateRevenue === "function" ||
-    !typeof calculateBonus === "function"
+    typeof calculateRevenue !== "function" ||
+    typeof calculateBonus !== "function"
   ) {
     throw new Error("Чего-то не хватает");
   }
